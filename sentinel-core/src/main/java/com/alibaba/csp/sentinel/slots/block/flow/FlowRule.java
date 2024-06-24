@@ -19,6 +19,7 @@ import com.alibaba.csp.sentinel.slots.block.AbstractRule;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 
 /**
+ * 流量控制规则
  * <p>
  * Each flow rule is mainly composed of three factors: <strong>grade</strong>,
  * <strong>strategy</strong> and <strong>controlBehavior</strong>:

@@ -21,6 +21,7 @@ import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import java.util.Objects;
 
 /**
+ * 熔断降级规则
  * <p>
  * Degrade is used when the resources are in an unstable state, these resources
  * will be degraded within the next defined time window. There are two ways to
@@ -59,6 +60,7 @@ public class DegradeRule extends AbstractRule {
     private int grade = RuleConstant.DEGRADE_GRADE_RT;
 
     /**
+     * 慢调用比例模式下为慢调用临界 RT（超出该值计为慢调用）；异常比例/异常数模式下为对应的阈值 <br />
      * Threshold count. The exact meaning depends on the field of grade.
      * <ul>
      *     <li>In average RT mode, it means the maximum response time(RT) in milliseconds.</li>
@@ -69,12 +71,14 @@ public class DegradeRule extends AbstractRule {
     private double count;
 
     /**
+     * 熔断时长，单位为 s <br />
      * Recovery timeout (in seconds) when circuit breaker opens. After the timeout, the circuit breaker will
      * transform to half-open state for trying a few requests.
      */
     private int timeWindow;
 
     /**
+     * 熔断触发的最小请求数，请求数小于该值时即使异常比率超出阈值也不会熔断（1.7.0 引入） <br />
      * Minimum number of requests (in an active statistic time span) that can trigger circuit breaking.
      *
      * @since 1.7.0
@@ -82,6 +86,7 @@ public class DegradeRule extends AbstractRule {
     private int minRequestAmount = RuleConstant.DEGRADE_DEFAULT_MIN_REQUEST_AMOUNT;
 
     /**
+     * 慢调用比例阈值，仅慢调用比例模式有效（1.8.0 引入） <br />
      * The threshold of slow request ratio in RT mode.
      *
      * @since 1.8.0
@@ -89,6 +94,7 @@ public class DegradeRule extends AbstractRule {
     private double slowRatioThreshold = 1.0d;
 
     /**
+     * 统计时长（单位为 ms），如 60*1000 代表分钟级（1.8.0 引入） <br />
      * The interval statistics duration in millisecond.
      *
      * @since 1.8.0
