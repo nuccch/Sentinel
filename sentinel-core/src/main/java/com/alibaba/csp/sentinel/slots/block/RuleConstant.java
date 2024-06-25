@@ -56,7 +56,9 @@ public final class RuleConstant {
     public static final int CONTROL_BEHAVIOR_DEFAULT = 0;
     /** 流控效果：慢启动模式 */
     public static final int CONTROL_BEHAVIOR_WARM_UP = 1;
-    /** 流控效果：排队等待 */
+    /** 流控效果：排队等待，匀速器，
+        这种方式严格控制了请求通过的间隔时间，也即是让请求以均匀的速度通过，对应的是漏桶算法。
+     */
     public static final int CONTROL_BEHAVIOR_RATE_LIMITER = 2;
     public static final int CONTROL_BEHAVIOR_WARM_UP_RATE_LIMITER = 3;
 
